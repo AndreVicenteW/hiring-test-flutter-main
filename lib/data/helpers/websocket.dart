@@ -19,12 +19,12 @@ class FoxbitWebSocket {
   int get lastId => _id - _idStepSize;
 
   FoxbitWebSocket() {
-    _socket = IOWebSocketChannel.connect('api.foxbit.com.br?origin=android');
+    _socket = IOWebSocketChannel.connect('ws://api.foxbit.com.br?origin=android');
   }
 
   void connect() {
 _socket = IOWebSocketChannel.connect(
-      Uri.parse('api.foxbit.com.br?origin=android'),
+      Uri.parse('ws://api.foxbit.com.br?origin=android'),
     );
     _connectedByUser = true;
        _socket.stream.listen(
