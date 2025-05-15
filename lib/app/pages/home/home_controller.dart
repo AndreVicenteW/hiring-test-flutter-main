@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/app/pages/home/home_presenter.dart';
-import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
+import 'package:foxbit_hiring_test_template/data/services/websocket/foxbit/foxbit_websocket.dart';
 
 class HomeController extends Controller {
   final HomePresenter presenter;

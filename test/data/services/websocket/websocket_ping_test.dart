@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:foxbit_hiring_test_template/data/repositories/heartbeat_repository.dart';
 import 'package:foxbit_hiring_test_template/domain/usecases/heartbeat_usecase.dart';
 
-import 'connections/test_websocket.dart';
-import 'utils/default_test_observer.dart';
+import '../../../utils/default_test_observer.dart';
+import '../../../utils/test_websocket.dart';
 
 void main() {
   late TestFoxbitWebSocket webSocket;

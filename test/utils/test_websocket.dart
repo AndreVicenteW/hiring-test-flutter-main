@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
+import 'package:foxbit_hiring_test_template/data/services/websocket/foxbit/foxbit_websocket.dart';
 
 class TestFoxbitWebSocket extends FoxbitWebSocket {
   List<String> sendedMessages = [];

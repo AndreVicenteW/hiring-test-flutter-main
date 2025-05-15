@@ -1,6 +1,6 @@
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
 import 'package:foxbit_hiring_test_template/data/repositories/heartbeat_repository.dart';
+import 'package:foxbit_hiring_test_template/data/services/websocket/foxbit/foxbit_websocket.dart';
 import 'package:foxbit_hiring_test_template/domain/usecases/heartbeat_usecase.dart';
 
 class HomePresenter extends Presenter {

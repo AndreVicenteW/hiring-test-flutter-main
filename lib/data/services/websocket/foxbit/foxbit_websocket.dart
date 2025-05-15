@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
+import 'package:foxbit_hiring_test_template/data/constants.dart';
+import 'package:foxbit_hiring_test_template/data/services/websocket/websocket_service.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:web_socket_channel/io.dart';
 
-class FoxbitWebSocket {
+class FoxbitWebSocket implements WebSocketService {
   late IOWebSocketChannel _socket;
   int _id = 0;
   bool _connectedByUser = false;
@@ -18,16 +20,24 @@ class FoxbitWebSocket {
 
   int get lastId => _id - _idStepSize;
 
+  @override
+  Stream<Map> get stream => streamController.stream;
+
   FoxbitWebSocket() {
-    _socket = IOWebSocketChannel.connect('ws://api.foxbit.com.br?origin=android');
+    _socket = IOWebSocketChannel.connect(webSocketUrl);
   }
 
+  @override
   void connect() {
-_socket = IOWebSocketChannel.connect(
-      Uri.parse('ws://api.foxbit.com.br?origin=android'),
+    if (connected) {
+      return;
+    }
+
+    _socket = IOWebSocketChannel.connect(
+      Uri.parse(webSocketUrl),
     );
     _connectedByUser = true;
-       _socket.stream.listen(
+    _socket.stream.listen(
       onMessage,
       onDone: _onDone,
       cancelOnError: false,
@@ -36,17 +46,17 @@ _socket = IOWebSocketChannel.connect(
     _id = 0;
   }
 
+  @override
   Future<void> disconnect() async {
     _connectedByUser = false;
     connected = false;
     await _socket.sink.close();
   }
 
+  @override
   void send(String method, dynamic data) {
-     _socket.sink.add(prepareMessage(method, data));
+    _socket.sink.add(prepareMessage(method, data));
   }
-
-  Stream<Map> get stream => streamController.stream;
 
   @protected
   String prepareMessage(String method, dynamic objectData) {
@@ -54,7 +64,7 @@ _socket = IOWebSocketChannel.connect(
       "m": 0,
       "i": _id,
       "n": method,
-      "o": json.encode(objectData)
+      "o": json.encode(objectData),
     };
 
     _id += _idStepSize;
