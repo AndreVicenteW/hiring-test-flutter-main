@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:foxbit_hiring_test_template/app/pages/quotation/widgets/instrument_item.dart';
-import 'package:foxbit_hiring_test_template/app/pages/quotation/widgets/instrument_item_details.dart';
 import 'package:foxbit_hiring_test_template/app/pages/quotation/widgets/instrument_list.dart';
 import 'package:foxbit_hiring_test_template/app/utils/base_cubit_state.dart';
 

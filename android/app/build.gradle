@@ -23,7 +23,9 @@ if (flutterVersionName == null) {
 }
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 35
+
+    namespace = "com.example.foxbit_hiring_test_template"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -38,6 +40,7 @@ android {
         applicationId "com.example.foxbit_hiring_test_template"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 34
+        ndkVersion "26.3.11579264"
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -48,6 +51,11 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
